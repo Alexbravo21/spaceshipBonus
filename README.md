@@ -10,7 +10,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 Use the following commands:
 
-To install node_modules
+To install node_modules:
 $ npm install 
 
 To run api server 
