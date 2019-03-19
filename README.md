@@ -6,6 +6,21 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
+## To run the application in development
+
+Use the following commands:
+
+To install node_modules
+$ npm install 
+
+To run api server 
+$ npm run dev
+
+To run angular app 
+$ ng serve
+
+With this you can open http://localhost:4200 to see the app.
+
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
