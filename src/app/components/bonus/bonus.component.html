@@ -1,0 +1,32 @@
+<main class="container" id="bonus_container">
+	<h1 class="card_title animated fadeInUp">2 BONUSES FOR YOU TO USE NOW</h1>
+	<div class="card_container">
+		<div class="row">
+			<div class="col-12 col-md-6" *ngFor="let bonus of bonusService.bonus">
+				<div class="card_item col-12 animated bounceIn delay-1s" [ngClass]="{transparent: bonus.blocked == true}">
+					<div class="row intern_row_card">
+						<div class="col-8">
+							<p #card_copy class="card_bonuscopy">
+								{{ bonus.name }}
+							</p>
+							<div class="btn btn--primary btn--animated">PLAY {{ bonus.game }}</div>
+						</div>
+						<div class="col-4 card_side check" *ngIf="bonus.type == 'free'; else clockBlock">
+							<img src="assets/images/tick.svg" alt="tick" class="tick">
+						</div>
+						<ng-template #clockBlock>
+							<div class="col-4 card_side clock" *ngIf="bonus.blocked == false; else lockBlock">
+								<img src="assets/images/clock.png" alt="clock" class="tick">
+							</div>
+						</ng-template>
+						<ng-template #lockBlock>
+							<div class="col-4 card_side lock">
+								<img src="assets/images/lock.svg" alt="lock" class="tick">
+							</div>
+						</ng-template>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>

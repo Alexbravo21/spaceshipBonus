@@ -1,0 +1,172 @@
+$site_url: '/';
+$colors: (
+    primary: slateblue,
+    check: #84d400,
+    clock: #f78d00,
+    lock: #7c0e0e
+);
+@mixin fontface($name, $src, $weight){
+  @font-face{
+      font-family: $name;
+      src: url($site_url + $src);
+      font-weight: $weight;
+  }
+}
+
+
+@include fontface("todayshop", 'assets/fonts/todayshop-medium.otf', normal);
+@include fontface("todayshop", 'assets/fonts/todayshop-bold.otf', bold);
+
+@function color($color-name){
+    @return map-get($colors, $color-name);
+}
+
+@mixin gradient($color1, $color2){
+    background: $color1; /* Old browsers */
+    background: -moz-linear-gradient(top, $color1 0%, $color2 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, $color1 0%,$color2 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, $color1 0%,$color2 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color1', endColorstr='$color2',GradientType=0 ); /* IE6-9 */
+}
+@mixin prefix($property, $value, $prefixes: ()) {
+    @each $prefix in $prefixes {
+      #{'-' + $prefix + '-' + $property}: $value;
+    }
+    #{$property}: $value;
+  }
+@mixin medio($top, $left, $transx, $transy){
+    position: absolute;
+    top: $top;
+    left: $left;
+    transform: translate($transx, $transy);
+}
+$padding: 15px;
+
+$xl: 1200px;
+$large: 992px;
+$medium: 768px;
+$small: 576px;
+
+@mixin lamedia($size){
+    @media (min-width: $size){
+        @content;
+    }
+}
+
+#bonus_container{
+    font-family: 'todayshop';
+	font-weight: bold;
+	.card_container{
+		width: 800px;
+		max-width: 90%;
+		margin: 0 auto;
+	}
+    .card_title{
+        color: #fff;
+        font-size: 1.6rem;
+        text-align: center;
+		padding: 0 $padding*2;
+		animation-delay: .5s
+    }
+    .card_item{
+        background-color: #fff;
+        border-radius: 5px;
+        text-align: center;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        &.transparent{
+          opacity: .2;
+          pointer-events: none;
+		}
+		.intern_row_card{
+			height: 220px;
+		}
+        .card_bonuscopy{
+            font-size: 23px;
+            letter-spacing: 0.64px;
+            line-height: 29px;
+            font-weight: bolder;
+            margin-top: 30px;
+            margin-bottom: 50px;
+			&.less_margin{
+				margin-bottom: 20px;
+			}
+        }
+        .btn {
+			position: absolute;
+			bottom: 20px;
+			left: 50%;
+			transform: translate(-50%, 0);
+            display: inline-block;
+			font-size: 19px;
+			color: #FFFFFF;
+			letter-spacing: 0.21px;
+			line-height: 15px;
+            padding: 16px 10px 12px;
+            margin: 0 auto 0;
+            text-align: center;
+            text-transform: uppercase;
+            overflow: hidden;
+            z-index: 1;
+            cursor: pointer;
+            border: none;
+			background-color: color(primary);
+			width: 150px;
+			max-width: 80%;
+            &:focus {
+              outline: none;
+            }
+          }
+          .btn--primary {
+            color: #fff;
+          }
+          .btn--animated {
+            transition-property: color;
+            transition-duration: 0.5s;
+            &:before {
+              content: "";
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              background: color(check);
+              transform: scaleX(0);
+              transform-origin: 0 50%;
+              transition-property: transform;
+              transition-duration: 350ms;
+              transition-timing-function: ease-out;
+              z-index: -1;
+            }
+            &:hover {
+              color: white;
+              &:before {
+                transform: scaleX(1);
+                transition-timing-function: cubic-bezier(0.45, 1.64, 0.47, 0.66);
+              }
+            }
+        }
+        .check{
+            background-color: lighten(color(check), 50% );
+            border-radius: 0 5px 5px 0;
+            .tick{
+                @include medio(50%, 50%, -50%, -50%);
+            }
+        }
+        .clock{
+          background-color: lighten(color(clock), 40%);
+          border-radius: 0 5px 5px 0;
+          .tick{
+            @include medio(50%, 50%, -50%, -50%);
+          }
+        }
+        .lock{
+          background-color: lighten(color(lock), 40%);
+          border-radius: 0 5px 5px 0;
+          .tick{
+            max-width: 42px;
+            @include medio(50%, 50%, -50%, -50%);
+          }
+        }
+    }
+}

@@ -1,0 +1,9 @@
+@import 'app/components/bonus/bonus.component.scss';
+html{
+    height: 100%;
+}
+body{
+    min-height: 100%;
+    background-color: lighten(color(primary), 10%);
+    font-family: 'TodaySHOP-Bold';
+}

@@ -1,0 +1,29 @@
+@import 'components/bonus/bonus.component.scss';
+
+
+header{
+    position: relative;
+    height: 80px;
+    background-color: slateblue;
+    @include prefix(box-shadow, 1px 3px 5px -1px rgba(0,0,0,0.39), webkit ms);
+    margin-bottom: 30px;
+    .logo{
+        height: 50px;
+        margin: 15px 0 0 40px;
+        animation-duration: .7s;
+    }
+    .user_name{
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        color: #fff;
+        width: 300px;
+        max-width: 50%;
+        text-align: right;
+        font-family: 'todayshop';
+        font-size: 16px;
+        letter-spacing: 0.44px;
+        line-height: 24px;
+        animation-duration: .7s;
+    }
+}
